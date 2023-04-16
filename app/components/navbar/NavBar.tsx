@@ -2,6 +2,7 @@ import React from "react";
 import Container from "../Container";
 import { Content } from "next/font/google";
 import Logo from "./Logo";
+import Search from "../search/Search";
 
 const NavBar = () => {
   return (
@@ -19,6 +20,7 @@ const NavBar = () => {
                     "
         >
           <Logo />
+          <Search />
         </div>
       </Container>
     </div>
