@@ -3,6 +3,7 @@ import Container from "../Container";
 import { Content } from "next/font/google";
 import Logo from "./Logo";
 import Search from "../search/Search";
+import UserMenu from "./UserMenu";
 
 const NavBar = () => {
   return (
@@ -21,6 +22,7 @@ const NavBar = () => {
         >
           <Logo />
           <Search />
+          <UserMenu />
         </div>
       </Container>
     </div>
