@@ -3,8 +3,14 @@
 @tailwind utilities;
 
 
+@font-face {
+  font-family: font;
+  src: url('/fonts/IRANSans-web.ttf');
+}
+
 html,
 body,
 :root{
   height: 100%;
+  font-family: font;
 }

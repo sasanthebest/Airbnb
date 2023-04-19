@@ -1,7 +1,7 @@
 import NavBar from "./components/navbar/NavBar";
 import "./globals.css";
 import { Nunito } from "next/font/google";
-
+import Modals from "./components/modals/Modals";
 export const metadata = {
   title: "Airbnb",
   description: "Aribnb",
