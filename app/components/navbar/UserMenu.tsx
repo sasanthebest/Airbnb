@@ -1,10 +1,12 @@
 "use client";
-
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../avatar/Avatar";
 import { useState } from "react";
 import MenuItem from "./MenuItem";
+import useRegisterModal from "@/hooks/useRegisterModal";
+
 const UserMenu = () => {
+  const registerModal = useRegisterModal();
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="relative">
@@ -69,10 +71,7 @@ const UserMenu = () => {
           <div className="flex flex-col cursor-pointer">
             <>
               <MenuItem label="login" onClick={() => console.log("clicked")} />
-              <MenuItem
-                label="Sign up"
-                onClick={() => console.log("clicked")}
-              />
+              <MenuItem label="Sign up" onClick={registerModal.onOpen} />
             </>
           </div>
         </div>

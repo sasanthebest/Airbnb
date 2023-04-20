@@ -15,7 +15,7 @@ const Button = ({
   disabled,
   outline,
   small,
-  icon,
+  icon: Icon,
 }: ButtonProps) => {
   return (
     <button
@@ -39,6 +39,7 @@ const Button = ({
         ${small ? "border-[1px]" : "border-2"}
     `}
     >
+      {Icon && <Icon className="absolute left-4 top-3" size={24} />}
       {label}
     </button>
   );

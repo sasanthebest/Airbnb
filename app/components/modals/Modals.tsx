@@ -12,7 +12,7 @@ interface ModalProps {
   actionLabel: string;
   disabled?: boolean;
   secondaryAction?: () => void;
-  secondaryLabel?: string;
+  secondaryActionLabel?: string;
 }
 const Modals = ({
   isOpen,
@@ -24,7 +24,7 @@ const Modals = ({
   actionLabel,
   disabled,
   secondaryAction,
-  secondaryLabel,
+  secondaryActionLabel,
 }: ModalProps) => {
   const [showModal, setShowModal] = useState(isOpen);
   useEffect(() => {
@@ -169,12 +169,21 @@ const Modals = ({
                     w-full
                 "
                 >
+                  {secondaryAction && secondaryActionLabel && (
+                    <Button
+                      outline
+                      disabled={disabled}
+                      onClick={handleSecondaryAction}
+                      label={secondaryActionLabel}
+                    />
+                  )}
                   <Button
                     disabled={disabled}
-                    onClick={handleSubmit}
                     label={actionLabel}
+                    onClick={handleSubmit}
                   />
                 </div>
+                {footer}
               </div>
             </div>
           </div>
