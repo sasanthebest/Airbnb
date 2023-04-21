@@ -1,11 +1,11 @@
 import ClientOnly from "./components/ClientOnly";
 import RegisterModal from "./components/modals/RegisterModal";
 import NavBar from "./components/navbar/NavBar";
-import "./globals.css";
 import { Nunito } from "next/font/google";
 import ToasterProvider from "./provider/ToasterProvider";
 import LoginModal from "./components/modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
+import "./globals.css";
 
 export const metadata = {
   title: "Airbnb",

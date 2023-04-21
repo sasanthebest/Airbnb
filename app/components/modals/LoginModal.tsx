@@ -81,45 +81,45 @@ const LoginModal = () => {
     </div>
   );
 
-//   const footerContent = (
-//     <div
-//       className="
-//         flex flex-col gap-4 mt-3
-//      "
-//     >
-//       <hr />
-//       <Button
-//         outline
-//         label="ثبت نام با گوگل"
-//         icon={FcGoogle}
-//         onClick={() => {}}
-//       />
-//       <Button
-//         outline
-//         label="ثبت نام با گیت هاب"
-//         icon={AiFillGithub}
-//         onClick={() => {}}
-//       />
-//       <div
-//         className="
-//         text-neutral-500
-//         text-center
-//         mt-4
-//         font-light
-//       "
-//       >
-//         <div className="justify-center flex flex-row item-center gap-2">
-//           <div
-//             onClick={() => {}}
-//             className="text-neutral-800 cursor-pointer hover:underline"
-//           >
-//             ورود
-//           </div>
-//           <div>قبلا ثبت نام کرده اید؟</div>
-//         </div>
-//       </div>
-//     </div>
-//   );
+  const footerContent = (
+    <div
+      className="
+        flex flex-col gap-4 mt-3
+     "
+    >
+      <hr />
+      <Button
+        outline
+        label="ثبت نام با گوگل"
+        icon={FcGoogle}
+        onClick={() => {}}
+      />
+      <Button
+        outline
+        label="ثبت نام با گیت هاب"
+        icon={AiFillGithub}
+        onClick={() => {}}
+      />
+      <div
+        className="
+        text-neutral-500
+        text-center
+        mt-4
+        font-light
+      "
+      >
+        <div className="justify-center flex flex-row item-center gap-2">
+          <div
+            onClick={() => {}}
+            className="text-neutral-800 cursor-pointer hover:underline"
+          >
+            ورود
+          </div>
+          <div>قبلا ثبت نام کرده اید؟</div>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <Modals
@@ -130,7 +130,7 @@ const LoginModal = () => {
       onClose={loginModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
-    //   footer={footerContent}
+      footer={footerContent}
     />
   );
 };

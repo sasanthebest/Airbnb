@@ -6,9 +6,11 @@ import MenuItem from "./MenuItem";
 import useRegisterModal from "@/hooks/useRegisterModal";
 import useLoginModal from "@/hooks/useLoginModal";
 import { User } from "@prisma/client";
+import { signOut } from "next-auth/react";
+import { SafeUser } from "@/app/types";
 
 interface UserMenuProps{
-  currentUser?:User| null
+  currentUser?:SafeUser| null
 }
 
 const UserMenu = ({currentUser}:UserMenuProps) => {
@@ -84,7 +86,7 @@ const UserMenu = ({currentUser}:UserMenuProps) => {
               <MenuItem label="رزرو های من" onClick={()=>{}} />
               <MenuItem label="مورد علاقه های من" onClick={()=>{}} />
               <MenuItem label="خانه های من " onClick={()=>{}} />
-              <MenuItem label="خروج" onClick={()=>{}} />
+              <MenuItem label="خروج" onClick={()=>signOut} />
               </>
             ):
             (<>
