@@ -92,12 +92,6 @@ const RegisterModal = () => {
         icon={AiFillGithub}
         onClick={() => {}}
       />
-      <Button
-        outline
-        label="ثبت نام با فیسبوک"
-        icon={BsFacebook}
-        onClick={() => {}}
-      />
       <div
         className="
         text-neutral-500
