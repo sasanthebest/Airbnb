@@ -4,10 +4,18 @@ import Avatar from "../avatar/Avatar";
 import { useState } from "react";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/hooks/useRegisterModal";
+import useLoginModal from "@/hooks/useLoginModal";
+import { User } from "@prisma/client";
 
-const UserMenu = () => {
+interface UserMenuProps{
+  currentUser?:User| null
+}
+
+const UserMenu = ({currentUser}:UserMenuProps) => {
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
@@ -69,10 +77,20 @@ const UserMenu = () => {
           "
         >
           <div className="flex flex-col cursor-pointer">
-            <>
-              <MenuItem label="login" onClick={() => console.log("clicked")} />
+
+            {currentUser ?(
+              <>
+              <MenuItem label="سفر های من" onClick={loginModal.onOpen} />
+              <MenuItem label="رزرو های من" onClick={()=>{}} />
+              <MenuItem label="مورد علاقه های من" onClick={()=>{}} />
+              <MenuItem label="خانه های من " onClick={()=>{}} />
+              <MenuItem label="خروج" onClick={()=>{}} />
+              </>
+            ):
+            (<>
+              <MenuItem label="login" onClick={loginModal.onOpen} />
               <MenuItem label="Sign up" onClick={registerModal.onOpen} />
-            </>
+            </>)}
           </div>
         </div>
       )}

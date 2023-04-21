@@ -4,8 +4,12 @@ import { Content } from "next/font/google";
 import Logo from "./Logo";
 import Search from "../search/Search";
 import UserMenu from "./UserMenu";
+import {User} from '@prisma/client'
+interface NavbarProps{
+  currentUser?:User | null
+}
 
-const NavBar = () => {
+const NavBar = ({currentUser}:NavbarProps) => {
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
       <div className="py4 border-b-[1px]"></div>
@@ -22,7 +26,7 @@ const NavBar = () => {
         >
           <Logo />
           <Search />
-          <UserMenu />
+          <UserMenu  currentUser={currentUser} />
         </div>
       </Container>
     </div>
