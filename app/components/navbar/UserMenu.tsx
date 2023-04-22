@@ -1,13 +1,15 @@
 "use client";
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../avatar/Avatar";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/hooks/useRegisterModal";
 import useLoginModal from "@/hooks/useLoginModal";
 import { User } from "@prisma/client";
 import { signOut } from "next-auth/react";
 import { SafeUser } from "@/app/types";
+import { useRouter } from "next/navigation";
+import LoginModal from "../modals/LoginModal";
 
 interface UserMenuProps{
   currentUser?:SafeUser| null
@@ -17,12 +19,22 @@ const UserMenu = ({currentUser}:UserMenuProps) => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
+  const router=useRouter()
+  
+
+  const onRent=useCallback(()=>{
+    if (!currentUser){
+      return loginModal.onOpen()
+    }
+    // open rent modal
+    
+  },[currentUser,LoginModal])
 
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
-          onClick={() => console.log("clicked")}
+          onClick={onRent}
           className="
         hidden
         md:block
@@ -86,7 +98,7 @@ const UserMenu = ({currentUser}:UserMenuProps) => {
               <MenuItem label="رزرو های من" onClick={()=>{}} />
               <MenuItem label="مورد علاقه های من" onClick={()=>{}} />
               <MenuItem label="خانه های من " onClick={()=>{}} />
-              <MenuItem label="خروج" onClick={()=>signOut} />
+              <MenuItem label="خروج" onClick={()=>signOut()} />
               </>
             ):
             (<>

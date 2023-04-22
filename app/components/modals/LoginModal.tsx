@@ -2,7 +2,7 @@
 import useRegisterModal from "@/hooks/useRegisterModal";
 import axios from "axios";
 import {signIn} from 'next-auth/react'
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Modals from "./Modals";
 import Heading from "../Heading";
@@ -16,11 +16,13 @@ import useLoginModal from "@/hooks/useLoginModal";
 import { redirect } from "next/dist/server/api-utils";
 import {useRouter} from 'next/navigation'
 import getCurrentUser from "@/app/actions/getCurrentUser";
+import RegisterModal from "./RegisterModal";
 
 
 const LoginModal = () => {
   const router=useRouter()
   const loginModal = useLoginModal();
+  const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -51,8 +53,18 @@ const LoginModal = () => {
     })
 
 
+
+
     
   };
+  const toggle=useCallback(
+    () => {
+      loginModal.onClose()
+      registerModal.onOpen()
+    },
+    [loginModal,registerModal],
+  )
+  
 
   const bodyContent = (
     <div className="flex flex-col gap-">
@@ -88,7 +100,7 @@ const LoginModal = () => {
      "
     >
       <hr />
-      <Button
+      {/* <Button
         outline
         label="ثبت نام با گوگل"
         icon={FcGoogle}
@@ -99,7 +111,7 @@ const LoginModal = () => {
         label="ثبت نام با گیت هاب"
         icon={AiFillGithub}
         onClick={() => {}}
-      />
+      /> */}
       <div
         className="
         text-neutral-500
@@ -110,12 +122,12 @@ const LoginModal = () => {
       >
         <div className="justify-center flex flex-row item-center gap-2">
           <div
-            onClick={() => {}}
+            onClick={toggle}
             className="text-neutral-800 cursor-pointer hover:underline"
           >
-            ورود
+            ثبت نام کنید
           </div>
-          <div>قبلا ثبت نام کرده اید؟</div>
+          <div>حساب کاربری ندارید؟</div>
         </div>
       </div>
     </div>

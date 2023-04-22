@@ -1,7 +1,7 @@
 "use client";
 import useRegisterModal from "@/hooks/useRegisterModal";
 import axios from "axios";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Modals from "./Modals";
 import Heading from "../Heading";
@@ -11,8 +11,11 @@ import Button from "../Button";
 import { FcGoogle } from "react-icons/Fc";
 import { BsFacebook } from "react-icons/bs";
 import { AiFillGithub } from "react-icons/ai";
+import LoginModal from "./LoginModal";
+import useLoginModal from "@/hooks/useLoginModal";
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -37,6 +40,15 @@ const RegisterModal = () => {
       .catch((err) => toast.error("!! کص نگو "))
       .finally(() => setIsLoading(false));
   };
+
+  const toggle=useCallback(
+    () => {
+        registerModal.onClose()
+        loginModal.onOpen()
+    },
+    [registerModal,registerModal],
+  )
+  
 
   const bodyContent = (
     <div className="flex flex-col gap-">
@@ -80,7 +92,7 @@ const RegisterModal = () => {
      "
     >
       <hr />
-      <Button
+      {/* <Button
         outline
         label="ثبت نام با گوگل"
         icon={FcGoogle}
@@ -91,7 +103,7 @@ const RegisterModal = () => {
         label="ثبت نام با گیت هاب"
         icon={AiFillGithub}
         onClick={() => {}}
-      />
+      /> */}
       <div
         className="
         text-neutral-500
@@ -102,7 +114,7 @@ const RegisterModal = () => {
       >
         <div className="justify-center flex flex-row item-center gap-2">
           <div
-            onClick={() => {}}
+            onClick={toggle}
             className="text-neutral-800 cursor-pointer hover:underline"
           >
             ورود
