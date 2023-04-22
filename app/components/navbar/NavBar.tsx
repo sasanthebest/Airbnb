@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import Container from "../Container";
 import { Content } from "next/font/google";
@@ -5,6 +6,7 @@ import Logo from "./Logo";
 import Search from "../search/Search";
 import UserMenu from "./UserMenu";
 import { SafeUser } from "@/app/types";
+import Category from "./Category";
 interface NavbarProps{
   currentUser?:SafeUser | null
 }
@@ -12,7 +14,7 @@ interface NavbarProps{
 const NavBar = ({currentUser}:NavbarProps) => {
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
-      <div className="py4 border-b-[1px]"></div>
+      <div className="py4 border-b-[1px]">
       <Container>
         <div
           className="
@@ -29,7 +31,10 @@ const NavBar = ({currentUser}:NavbarProps) => {
           <UserMenu  currentUser={currentUser} />
         </div>
       </Container>
-    </div>
+      </div>
+      <Category/>
+      </div>
+
   );
 };
 

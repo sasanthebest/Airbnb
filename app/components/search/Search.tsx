@@ -31,7 +31,7 @@ const Search = () => {
         px-6
         "
         >
-          Anywhere you'd lik
+          Anywhere youd lik
         </div>
         <div
           className="
