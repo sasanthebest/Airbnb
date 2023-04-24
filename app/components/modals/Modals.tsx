@@ -32,7 +32,6 @@ const Modals = ({
   }, [isOpen]);
 
   const handleClose = useCallback(() => {
-    console.log('closed')
     if (disabled) {
       return;
     }

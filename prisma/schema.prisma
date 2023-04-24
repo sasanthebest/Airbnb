@@ -59,8 +59,10 @@ model Listing {
   category      String
   roomCount     Int
   bathroomCount Int
-  gustCount     Int
+  guestCount     Int
   locationValue String
+  price Int
+  
 
   User         User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
   reservations Reservation[]

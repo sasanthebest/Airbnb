@@ -1,16 +1,28 @@
+@font-face {
+  font-family: font;
+  src: url('/fonts/IRANSans-web.ttf') format("woff2");
+} 
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 
-@font-face {
-  font-family: font;
-  src: url('/fonts/IRANSans-web.ttf');
-}
+
 
 html,
 body,
 :root{
   height: 100%;
   font-family: font;
+  /* direction: rtl; */
+}
+
+
+.leaflet-bottom,
+.leaflet-control,
+.leaflet-pane,
+.leaflet.top{
+  z-index: 0 !important;
 }

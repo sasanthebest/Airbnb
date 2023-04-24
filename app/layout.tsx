@@ -6,12 +6,14 @@ import ToasterProvider from "./provider/ToasterProvider";
 import LoginModal from "./components/modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
 import "./globals.css";
+import RentModal from "./components/modals/RentModal";
+
 
 export const metadata = {
   title: "Airbnb",
   description: "Aribnb",
 };
-const font = Nunito({ subsets: ["latin"] });
+
 
 export default async function RootLayout({
   children,
@@ -21,9 +23,10 @@ export default async function RootLayout({
   const currentUser=await getCurrentUser()
   return (
     <html lang="en">
-      <body className={font.className}>
+      <body>
         <ClientOnly>
           <ToasterProvider />
+          <RentModal/>
           <LoginModal/>
           <RegisterModal />
           <NavBar currentUser={currentUser} />

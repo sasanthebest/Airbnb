@@ -1,6 +1,7 @@
 "use client";
 
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import { ChangeEvent, useState } from "react";
+import { FieldErrors, FieldValues, UseFormGetValues, UseFormRegister } from "react-hook-form";
 import { BiDollar } from "react-icons/bi";
 
 interface InputeProps {
@@ -10,6 +11,7 @@ interface InputeProps {
   disabled?: boolean;
   formatPrice?: boolean;
   required?: boolean;
+  onChange?:(value:number)=>void;
   register: UseFormRegister<FieldValues>;
   errors: FieldErrors;
 }
@@ -23,6 +25,14 @@ const Inpute = ({
   register,
   errors,
 }: InputeProps) => {
+  const { onBlur, name, ref } = register(id,{required}); 
+  const [price,setPrice]=useState('')
+
+  const handleChange=(e:ChangeEvent<HTMLInputElement>)=>{
+    e.target.value ? setPrice(e.target.value):setPrice('هزار تومان ')
+  }
+
+  
   return (
     <div className="w-full relatice">
       {formatPrice && (
@@ -35,9 +45,13 @@ const Inpute = ({
       <input
         id={id}
         disabled={disabled}
-        {...register(id, { required })}
+        onChange={(e)=>handleChange(e)} 
+        onBlur={onBlur} // assign onBlur event
+        name={name} // assign name prop
+        ref={ref} // assign ref prop
         placeholder=" "
         type={type}
+        // min={type ==='number' ? 1000 :undefined}
         className={`
             peer
             w-full
@@ -77,6 +91,10 @@ const Inpute = ({
       >
         {label}
       </label>
+      {type==='number'&&(
+
+        <div className="left-4">{price}</div>
+      )}
     </div>
   );
 };

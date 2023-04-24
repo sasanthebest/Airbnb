@@ -47,9 +47,8 @@ const LoginModal = () => {
             
         }
         if (res?.error){
-            toast.error('.مشکلی بوجود اومده')
+          toast.error('.مشکلی بوجود اومده')
         }
-        
     })
 
 

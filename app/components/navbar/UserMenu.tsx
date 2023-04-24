@@ -10,6 +10,7 @@ import { signOut } from "next-auth/react";
 import { SafeUser } from "@/app/types";
 import { useRouter } from "next/navigation";
 import LoginModal from "../modals/LoginModal";
+import useRentModal from "@/hooks/useRentModal";
 
 interface UserMenuProps{
   currentUser?:SafeUser| null
@@ -18,17 +19,16 @@ interface UserMenuProps{
 const UserMenu = ({currentUser}:UserMenuProps) => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
+  const rentModal= useRentModal()
   const [isOpen, setIsOpen] = useState(false);
-  const router=useRouter()
-  
 
   const onRent=useCallback(()=>{
     if (!currentUser){
       return loginModal.onOpen()
     }
-    // open rent modal
+    rentModal.onOpen()
     
-  },[currentUser,LoginModal])
+  },[currentUser,LoginModal,rentModal])
 
   return (
     <div className="relative">
@@ -39,7 +39,7 @@ const UserMenu = ({currentUser}:UserMenuProps) => {
         hidden
         md:block
         text-sm
-        font-semibold
+        font-normal
         py-3
         px-4
         rounded-full
@@ -49,7 +49,7 @@ const UserMenu = ({currentUser}:UserMenuProps) => {
 
         "
         >
-          Airbnb your home
+          میزبان شو
         </div>
         <div
           onClick={() => setIsOpen(!isOpen)}
@@ -85,7 +85,7 @@ const UserMenu = ({currentUser}:UserMenuProps) => {
           md:w-3/4
           bg-white
           overflow-hidden
-          right-0
+          left-0
           top-12
           text-sm
           "
@@ -94,7 +94,8 @@ const UserMenu = ({currentUser}:UserMenuProps) => {
 
             {currentUser ?(
               <>
-              <MenuItem label="سفر های من" onClick={loginModal.onOpen} />
+              <MenuItem label="میزبان شو" onClick={rentModal.onOpen} />
+              <MenuItem label="سفر های من" onClick={()=>{}} />
               <MenuItem label="رزرو های من" onClick={()=>{}} />
               <MenuItem label="مورد علاقه های من" onClick={()=>{}} />
               <MenuItem label="خانه های من " onClick={()=>{}} />
