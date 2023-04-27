@@ -1,17 +1,18 @@
 'use client'
-import { SafeUser } from "@/app/types"
+import { SafeListing, SafeUser } from "@/app/types"
 import { Listing, Reservation } from "@prisma/client"
 import { format } from "date-fns"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { useMemo } from "react"
+import { useCallback, useMemo } from "react"
 import HeartButton from "../HeartButton"
 import useCountry from "@/hooks/useCountry"
 import Button from "../Button"
+import { toast } from "react-hot-toast"
 
 
 interface ListingsCardProps{
-    data:Listing
+    data:SafeListing
     reservation?:Reservation
     currentUser?:SafeUser | null
     onAction?:(id:string)=>void
@@ -26,16 +27,24 @@ const ListingsCard = ({
   reservation,
   currentUser,
   disabled,
-  actionId,
+  actionId="",
   actionLabel,
   onAction}:ListingsCardProps) => {
     const router=useRouter()
     const {getByValue}=useCountry()
     const location=getByValue(data.locationValue)
 
-  const handleCancel=()=>{
-    
-  }
+  const handleCancel=useCallback(
+    (e:React.MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
+      if (disabled){
+        return
+      }
+      onAction?.(actionId);
+    },
+    [onAction,actionId,disabled],
+  )
+  
 
   const reservationDate =useMemo(() => {
     if (!reservation)return null;
@@ -44,9 +53,6 @@ const ListingsCard = ({
     return `${format(start,'PP')}-${format(end,'pp')}`
   }
 
-
-
-  
   , [reservation])
 
   const price=useMemo(()=>{
@@ -58,8 +64,7 @@ const ListingsCard = ({
 
 
   return (
-
-    <div onClick={()=>router.push(`/listings/${data.id}`)} className="col-span-1 cursor-pointer group">
+    <div onClick={()=>{}} className="col-span-1 cursor-pointer group">
       <div className="flex flex-col gap-2 w-full">
         <div className="
             aspect-square

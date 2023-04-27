@@ -51,10 +51,6 @@ const LoginModal = () => {
         }
     })
 
-
-
-
-    
   };
   const toggle=useCallback(
     () => {
