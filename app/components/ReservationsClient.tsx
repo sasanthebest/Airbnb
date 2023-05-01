@@ -10,7 +10,7 @@ import { toast } from "react-hot-toast";
 import TripsCard from "./TripsCard";
 import ListingsCard from "./listings/ListingsCard";
 
-interface TripsClientProps{
+interface ReservationsClientProps{
     reservations:SafeReservation[];
     currentUser?:SafeUser | null;
 }
@@ -18,7 +18,7 @@ interface TripsClientProps{
 const ReservationsClient = ({
   reservations=[],
   currentUser
-}:TripsClientProps) => {
+}:ReservationsClientProps) => {
   const router=useRouter()
   const [deletingId,setDeletingId]=useState('')
   

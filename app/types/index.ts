@@ -24,3 +24,6 @@ Reservation,'createdAt'|'startDate'|'endDate'|'listing'
     endDate:string
     listing:SafeListing
 }
+
+
+
