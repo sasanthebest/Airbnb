@@ -98,7 +98,7 @@ const UserMenu = ({currentUser}:UserMenuProps) => {
               <>
               <MenuItem label="میزبان شو" onClick={rentModal.onOpen} />
               <MenuItem label="سفر های من" onClick={()=>router.push('/trips')} />
-              <MenuItem label="رزرو های من" onClick={()=>{}} />
+              <MenuItem label="رزرو های من" onClick={()=>router.push('/myreserves')} />
               <MenuItem label="مورد علاقه های من" onClick={()=>{}} />
               <MenuItem label="خانه های من " onClick={()=>{}} />
               <MenuItem label="خروج" onClick={()=>signOut()} />

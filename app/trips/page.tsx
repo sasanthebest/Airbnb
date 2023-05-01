@@ -31,7 +31,6 @@ const page=async()=>{
         <ClientOnly>
             <div>
                 <TripsClient reservations={reservations} currentUser={currentUser} />
-               
             </div>
         </ClientOnly>
     )
