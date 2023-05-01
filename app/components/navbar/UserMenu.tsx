@@ -20,6 +20,8 @@ const UserMenu = ({currentUser}:UserMenuProps) => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   const rentModal= useRentModal()
+  const router=useRouter()
+
   const [isOpen, setIsOpen] = useState(false);
 
   const onRent=useCallback(()=>{
@@ -95,7 +97,7 @@ const UserMenu = ({currentUser}:UserMenuProps) => {
             {currentUser ?(
               <>
               <MenuItem label="میزبان شو" onClick={rentModal.onOpen} />
-              <MenuItem label="سفر های من" onClick={()=>{}} />
+              <MenuItem label="سفر های من" onClick={()=>router.push('/trips')} />
               <MenuItem label="رزرو های من" onClick={()=>{}} />
               <MenuItem label="مورد علاقه های من" onClick={()=>{}} />
               <MenuItem label="خانه های من " onClick={()=>{}} />

@@ -82,6 +82,7 @@ const ListingDetail = ({listing,currentUser,reservations=[]}:ListingDetailProps)
       .then((res)=>{
         toast.success('با موفقیت رزرو شد')
         setDateRange(initialDateRange)
+        router.push('/trips')
       })
       .catch((err)=>{
         toast.error('خطا!!')

@@ -1,5 +1,5 @@
 'use client'
-import { SafeListing, SafeUser } from "@/app/types"
+import { SafeListing, SafeReservation, SafeUser } from "@/app/types"
 import { Listing, Reservation } from "@prisma/client"
 import { format } from "date-fns"
 import Image from "next/image"
@@ -13,7 +13,7 @@ import { toast } from "react-hot-toast"
 
 interface ListingsCardProps{
     data:SafeListing
-    reservation?:Reservation
+    reservation?:SafeReservation
     currentUser?:SafeUser | null
     onAction?:(id:string)=>void
     disabled?:boolean
@@ -47,10 +47,10 @@ const ListingsCard = ({
   
 
   const reservationDate =useMemo(() => {
-    if (!reservation)return null;
+    if (!reservation) return null;
     const start=new Date(reservation.startDate)
     const end=new Date(reservation.endDate)
-    return `${format(start,'PP')}-${format(end,'pp')}`
+    return `${format(start,'PP')}-${format(end,'PP')}`
   }
 
   , [reservation])
@@ -91,7 +91,7 @@ const ListingsCard = ({
           <div className="font-semibold text-lg">
             {location?.region},{location?.label}
           </div>
-          <div className="font-light text-neutral-500">
+          <div className="font-light text-neutral-500 text-sm">
             {reservationDate || data.category}
           </div>
           <div className="flex flex-row items-center gap-1">
