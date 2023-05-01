@@ -26,7 +26,8 @@ const TripsClint = ({
     (id:string) => {
       setDeletingId(id)
 
-      axios.delete(`/api/reservations/${id}`)
+
+    axios.delete(`/api/reservation/${id}`)
       .then((res)=>{toast.success('رزرو شما با موفقیت کنسل شد')})
       .catch((err)=>toast.error('مشکلی هست دوباره تلاش کنید.'))
       .finally(()=>{
@@ -40,7 +41,7 @@ const TripsClint = ({
 
   return (
     <Container>
-      <Heading title="ُسفرها" subtitle="جاهایی که قراره سفر کنی" center/>
+      <Heading title="سفرها" subtitle="جاهایی که قراره سفر کنی" center/>
       <div className="
         mt-10
         mb-10
