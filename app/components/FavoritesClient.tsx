@@ -21,8 +21,6 @@ const FavoritesClient =({
   currentUser
 }:FavoritesClientProps) => {
   const router=useRouter()
-  
-
 
   return (
     <Container>
