@@ -12,12 +12,15 @@ export default async function Home() {
   const currentUser=await getCurrentUser()
 
   if (allListings?.length===0){
+
     return (
       <ClientOnly>
         <EmptyState showReset/>
       </ClientOnly>
     )
   }
+
+
 
   return (
     <ClientOnly>

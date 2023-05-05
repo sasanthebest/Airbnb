@@ -7,11 +7,13 @@ import Search from "../search/Search";
 import UserMenu from "./UserMenu";
 import { SafeUser } from "@/app/types";
 import Category from "./Category";
+import useSearchModal from "@/hooks/useSearchModal";
 interface NavbarProps{
   currentUser?:SafeUser | null
 }
 
 const NavBar = ({currentUser}:NavbarProps) => {
+  
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
       <div className="py4 border-b-[1px]">
