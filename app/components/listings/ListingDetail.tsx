@@ -1,5 +1,5 @@
 'use client'
-import { SafeListing, SafeUser, safeReservation } from "@/app/types"
+import { SafeListing, SafeUser, SafeReservation } from "@/app/types"
 import { Reservation } from "@prisma/client"
 import { categories } from "../navbar/Category"
 import { useCallback, useEffect, useMemo, useState } from "react"
@@ -23,7 +23,7 @@ const initialDateRange={
 }
 
 interface ListingDetailProps{
-    reservations?:safeReservation[]
+    reservations?:SafeReservation[]
     listing:SafeListing & {User:SafeUser}
     currentUser?:SafeUser | null
 }  
@@ -32,6 +32,13 @@ const ListingDetail = ({listing,currentUser,reservations=[]}:ListingDetailProps)
 
   const loginModal=useLoginModal()
   const router=useRouter()
+  const [isLoading,setIsLoading]=useState(false)
+  const [totalPrice,setTotalPrice]=useState(listing.price)
+  const [dateRange,setDateRange]=useState<Range>(initialDateRange)
+
+  
+
+
   const disabledDates=useMemo(() => {
     let dates: Date[]=[];
 
@@ -54,16 +61,9 @@ const ListingDetail = ({listing,currentUser,reservations=[]}:ListingDetailProps)
     }
     , [listing.category])
 
-    if (!currentUser){
-      return loginModal.onOpen()
-    }
+  
 
-  const [isLoading,setIsLoading]=useState(false)
-  const [totalPrice,setTotalPrice]=useState(listing.price)
-  const [dateRange,setDateRange]=useState<Range>(initialDateRange)
-
-  const onCreateReservation=useCallback(
-    () => {
+  const onCreateReservation=useCallback(() => {
 
       if (!currentUser){
         return loginModal.onOpen()
@@ -113,11 +113,11 @@ const ListingDetail = ({listing,currentUser,reservations=[]}:ListingDetailProps)
     }
     
 
-  }, [dateRange])
-  
-  
-  
-  
+  }, [dateRange,listing.price])
+
+  if (!currentUser){
+    return loginModal.onOpen()
+  }
   return (
   
     <Container>

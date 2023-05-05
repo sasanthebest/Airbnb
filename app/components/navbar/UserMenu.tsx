@@ -30,7 +30,7 @@ const UserMenu = ({currentUser}:UserMenuProps) => {
     }
     rentModal.onOpen()
     
-  },[currentUser,LoginModal,rentModal])
+  },[currentUser,loginModal,rentModal])
 
   return (
     <div className="relative">
@@ -73,7 +73,7 @@ const UserMenu = ({currentUser}:UserMenuProps) => {
           <AiOutlineMenu />
         </div>
         <div className="hidden md:block">
-          <Avatar />
+          <Avatar/>
         </div>
       </div>
 

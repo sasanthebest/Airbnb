@@ -62,7 +62,7 @@ const RentModal = () => {
     const bathroomCount=watch('bathroomCount')
     const imageSrc=watch('imageSrc')
     const price=watch('price')
-    const Map=useMemo(() => dynamic(()=>import('../Map'),{ssr:false}), [location])
+    const Map=useMemo(() => dynamic(()=>import('../Map'),{ssr:false}), [])
     const [isLoading,setIsLoading]=useState(false)
 
 

@@ -37,17 +37,17 @@ enum STEPS{
         endDate:new Date(),
         key:'selection'
     })
-    const Map= useMemo(() => dynamic(()=>import( '../Map'),{ssr:false}),[location])
+    const Map= useMemo(() => dynamic(()=>import( '../Map'),{ssr:false}),[])
     
     const onBack=useCallback(() => {
         setSteps((value)=>value-1)
       },
-      [steps],
+      [],
     )
     const onNext=useCallback(() => {
         setSteps((value)=>value+1)
       },
-      [steps],
+      [],
     )
 
     const onSubmit=useCallback(async()=>{

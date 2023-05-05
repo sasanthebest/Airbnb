@@ -60,7 +60,7 @@ const ListingsCard = ({
       return reservation.totalPrice
     }
     return data.price
-  },[reservation])
+  },[reservation,data.price])
 
 
   return (

@@ -46,7 +46,7 @@ const RegisterModal = () => {
         registerModal.onClose()
         loginModal.onOpen()
     },
-    [registerModal,registerModal],
+    [registerModal,loginModal],
   )
   
 
